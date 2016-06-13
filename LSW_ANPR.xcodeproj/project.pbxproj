@@ -1,0 +1,423 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		56D6F96C1D0E59E70092D86E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D6F96B1D0E59E70092D86E /* AppDelegate.swift */; };
+		56D6F96E1D0E59E70092D86E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D6F96D1D0E59E70092D86E /* ViewController.swift */; };
+		56D6F9711D0E59E70092D86E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56D6F96F1D0E59E70092D86E /* Main.storyboard */; };
+		56D6F9731D0E59E70092D86E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56D6F9721D0E59E70092D86E /* Assets.xcassets */; };
+		56D6F9761D0E59E70092D86E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56D6F9741D0E59E70092D86E /* LaunchScreen.storyboard */; };
+		56D6F9811D0E59E70092D86E /* LSW_ANPRTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D6F9801D0E59E70092D86E /* LSW_ANPRTests.swift */; };
+		56D6F9951D0E6DFA0092D86E /* OpenCVWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 56D6F9941D0E6DFA0092D86E /* OpenCVWrapper.mm */; };
+		56D6F9971D0E6FD90092D86E /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56D6F9961D0E6FD90092D86E /* opencv2.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		56D6F97D1D0E59E70092D86E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 56D6F9601D0E59E70092D86E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 56D6F9671D0E59E70092D86E;
+			remoteInfo = LSW_ANPR;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		56D6F9681D0E59E70092D86E /* LSW_ANPR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LSW_ANPR.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		56D6F96B1D0E59E70092D86E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		56D6F96D1D0E59E70092D86E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		56D6F9701D0E59E70092D86E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		56D6F9721D0E59E70092D86E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		56D6F9751D0E59E70092D86E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		56D6F9771D0E59E70092D86E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		56D6F97C1D0E59E70092D86E /* LSW_ANPRTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LSW_ANPRTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		56D6F9801D0E59E70092D86E /* LSW_ANPRTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSW_ANPRTests.swift; sourceTree = "<group>"; };
+		56D6F9821D0E59E70092D86E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		56D6F98D1D0E6CF50092D86E /* LSW_ANPR-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LSW_ANPR-Bridging-Header.h"; sourceTree = "<group>"; };
+		56D6F9931D0E6DFA0092D86E /* OpenCVWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenCVWrapper.h; sourceTree = "<group>"; };
+		56D6F9941D0E6DFA0092D86E /* OpenCVWrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OpenCVWrapper.mm; sourceTree = "<group>"; };
+		56D6F9961D0E6FD90092D86E /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = opencv2.framework; path = ../../../../../Volumes/LINSW/OpenCVFramework/opencv2.framework; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		56D6F9651D0E59E70092D86E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				56D6F9971D0E6FD90092D86E /* opencv2.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		56D6F9791D0E59E70092D86E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		56D6F95F1D0E59E70092D86E = {
+			isa = PBXGroup;
+			children = (
+				56D6F9961D0E6FD90092D86E /* opencv2.framework */,
+				56D6F96A1D0E59E70092D86E /* LSW_ANPR */,
+				56D6F97F1D0E59E70092D86E /* LSW_ANPRTests */,
+				56D6F9691D0E59E70092D86E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		56D6F9691D0E59E70092D86E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				56D6F9681D0E59E70092D86E /* LSW_ANPR.app */,
+				56D6F97C1D0E59E70092D86E /* LSW_ANPRTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		56D6F96A1D0E59E70092D86E /* LSW_ANPR */ = {
+			isa = PBXGroup;
+			children = (
+				56D6F96B1D0E59E70092D86E /* AppDelegate.swift */,
+				56D6F96D1D0E59E70092D86E /* ViewController.swift */,
+				56D6F96F1D0E59E70092D86E /* Main.storyboard */,
+				56D6F9721D0E59E70092D86E /* Assets.xcassets */,
+				56D6F9741D0E59E70092D86E /* LaunchScreen.storyboard */,
+				56D6F9771D0E59E70092D86E /* Info.plist */,
+				56D6F98D1D0E6CF50092D86E /* LSW_ANPR-Bridging-Header.h */,
+				56D6F9931D0E6DFA0092D86E /* OpenCVWrapper.h */,
+				56D6F9941D0E6DFA0092D86E /* OpenCVWrapper.mm */,
+			);
+			path = LSW_ANPR;
+			sourceTree = "<group>";
+		};
+		56D6F97F1D0E59E70092D86E /* LSW_ANPRTests */ = {
+			isa = PBXGroup;
+			children = (
+				56D6F9801D0E59E70092D86E /* LSW_ANPRTests.swift */,
+				56D6F9821D0E59E70092D86E /* Info.plist */,
+			);
+			path = LSW_ANPRTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		56D6F9671D0E59E70092D86E /* LSW_ANPR */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 56D6F9851D0E59E70092D86E /* Build configuration list for PBXNativeTarget "LSW_ANPR" */;
+			buildPhases = (
+				56D6F9641D0E59E70092D86E /* Sources */,
+				56D6F9651D0E59E70092D86E /* Frameworks */,
+				56D6F9661D0E59E70092D86E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LSW_ANPR;
+			productName = LSW_ANPR;
+			productReference = 56D6F9681D0E59E70092D86E /* LSW_ANPR.app */;
+			productType = "com.apple.product-type.application";
+		};
+		56D6F97B1D0E59E70092D86E /* LSW_ANPRTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 56D6F9881D0E59E70092D86E /* Build configuration list for PBXNativeTarget "LSW_ANPRTests" */;
+			buildPhases = (
+				56D6F9781D0E59E70092D86E /* Sources */,
+				56D6F9791D0E59E70092D86E /* Frameworks */,
+				56D6F97A1D0E59E70092D86E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				56D6F97E1D0E59E70092D86E /* PBXTargetDependency */,
+			);
+			name = LSW_ANPRTests;
+			productName = LSW_ANPRTests;
+			productReference = 56D6F97C1D0E59E70092D86E /* LSW_ANPRTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		56D6F9601D0E59E70092D86E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = Linsw;
+				TargetAttributes = {
+					56D6F9671D0E59E70092D86E = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 4F6NMKB449;
+					};
+					56D6F97B1D0E59E70092D86E = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 4F6NMKB449;
+						TestTargetID = 56D6F9671D0E59E70092D86E;
+					};
+				};
+			};
+			buildConfigurationList = 56D6F9631D0E59E70092D86E /* Build configuration list for PBXProject "LSW_ANPR" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 56D6F95F1D0E59E70092D86E;
+			productRefGroup = 56D6F9691D0E59E70092D86E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				56D6F9671D0E59E70092D86E /* LSW_ANPR */,
+				56D6F97B1D0E59E70092D86E /* LSW_ANPRTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		56D6F9661D0E59E70092D86E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				56D6F9761D0E59E70092D86E /* LaunchScreen.storyboard in Resources */,
+				56D6F9731D0E59E70092D86E /* Assets.xcassets in Resources */,
+				56D6F9711D0E59E70092D86E /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		56D6F97A1D0E59E70092D86E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		56D6F9641D0E59E70092D86E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				56D6F96E1D0E59E70092D86E /* ViewController.swift in Sources */,
+				56D6F96C1D0E59E70092D86E /* AppDelegate.swift in Sources */,
+				56D6F9951D0E6DFA0092D86E /* OpenCVWrapper.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		56D6F9781D0E59E70092D86E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				56D6F9811D0E59E70092D86E /* LSW_ANPRTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		56D6F97E1D0E59E70092D86E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 56D6F9671D0E59E70092D86E /* LSW_ANPR */;
+			targetProxy = 56D6F97D1D0E59E70092D86E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		56D6F96F1D0E59E70092D86E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				56D6F9701D0E59E70092D86E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		56D6F9741D0E59E70092D86E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				56D6F9751D0E59E70092D86E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		56D6F9831D0E59E70092D86E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		56D6F9841D0E59E70092D86E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		56D6F9861D0E59E70092D86E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				"FRAMEWORK_SEARCH_PATHS[arch=*]" = /Volumes/LINSW/OpenCVFramework;
+				INFOPLIST_FILE = LSW_ANPR/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "lsw.self.LSW-ANPR";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "LSW_ANPR/LSW_ANPR-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		56D6F9871D0E59E70092D86E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				INFOPLIST_FILE = LSW_ANPR/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "lsw.self.LSW-ANPR";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "LSW_ANPR/LSW_ANPR-Bridging-Header.h";
+			};
+			name = Release;
+		};
+		56D6F9891D0E59E70092D86E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = LSW_ANPRTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "lsw.self.LSW-ANPRTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LSW_ANPR.app/LSW_ANPR";
+			};
+			name = Debug;
+		};
+		56D6F98A1D0E59E70092D86E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = LSW_ANPRTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "lsw.self.LSW-ANPRTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LSW_ANPR.app/LSW_ANPR";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		56D6F9631D0E59E70092D86E /* Build configuration list for PBXProject "LSW_ANPR" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				56D6F9831D0E59E70092D86E /* Debug */,
+				56D6F9841D0E59E70092D86E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		56D6F9851D0E59E70092D86E /* Build configuration list for PBXNativeTarget "LSW_ANPR" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				56D6F9861D0E59E70092D86E /* Debug */,
+				56D6F9871D0E59E70092D86E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		56D6F9881D0E59E70092D86E /* Build configuration list for PBXNativeTarget "LSW_ANPRTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				56D6F9891D0E59E70092D86E /* Debug */,
+				56D6F98A1D0E59E70092D86E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 56D6F9601D0E59E70092D86E /* Project object */;
+}
