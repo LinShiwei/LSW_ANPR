@@ -9,6 +9,10 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 @interface OpenCVWrapper : NSObject
-    + (UIImage *)processImageWithOpenCV:(UIImage*)inputImage;
+    + (UIImage *)cutOutPlate:(UIImage*)inputImage;
+    + (UIImage *)checkPlate:(UIImage*)inputImage;
+
     + (UIImage *)reprocessImageWithOpenCV:(UIImage*)inputImage;
+    + (UIImage *)cutImageWithOpenCV:(UIImage*)inputImage;
+
 @end

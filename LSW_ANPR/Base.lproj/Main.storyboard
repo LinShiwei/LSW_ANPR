@@ -18,14 +18,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vF7-Z2-T9A">
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vF7-Z2-T9A">
                                 <rect key="frame" x="20" y="20" width="600" height="400"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="400" id="iXh-0H-5DH"/>
                                     <constraint firstAttribute="width" constant="600" id="vAv-eF-rRo"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UoG-gP-6Dz">
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UoG-gP-6Dz">
                                 <rect key="frame" x="20" y="428" width="600" height="400"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="600" id="GjJ-aT-Er6"/>
@@ -42,8 +42,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="comparedImageView" destination="vF7-Z2-T9A" id="82q-uJ-4Ze"/>
-                        <outlet property="resultImageView" destination="UoG-gP-6Dz" id="CN0-Zm-gVr"/>
+                        <outlet property="firstImageView" destination="vF7-Z2-T9A" id="ulS-uk-Sim"/>
+                        <outlet property="secondImageView" destination="UoG-gP-6Dz" id="419-JP-dKq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
