@@ -60,7 +60,7 @@ using namespace std;
     return MatToUIImage(licencePlate);
 }
 
-+ (UIImage *)checkPlate:(UIImage*)inputImage {
++ (UIImage *)convertBGR2GRAY:(UIImage*)inputImage {
     cv::Mat cvImage;
     UIImageToMat(inputImage, cvImage);
     // do your processing here ...
@@ -73,36 +73,50 @@ using namespace std;
     cv::Mat cvImage;
     UIImageToMat(inputImage, cvImage);
     cv::Mat image;
-    cvImage.copyTo(image);
+    cv::cvtColor(cvImage, image, CV_GRAY2BGR);//为了使画出来的矩形框显出颜色。
+    
+    vector<vector<cv::Point>> contours;
+    NSMutableArray *characterRectValues = [[NSMutableArray alloc] init];
+    cv::findContours(cvImage, contours, CV_RETR_EXTERNAL, CV_CHAIN_APPROX_NONE);
+    for (size_t index = 0; index < contours.size(); index++) {
+        cv::Rect rect = cv::boundingRect(contours[index]);
+        if ((rect.height > cvImage.size().height*0.5)&&(rect.width > rect.height*0.4)) {
+            cv::rectangle(image, rect, cv::Scalar(0,255,0),1);
+            CGRect myRect = CGRectMake(rect.x, rect.y, rect.width, rect.height);
+            NSValue *value = [NSValue valueWithCGRect:myRect];
+            [characterRectValues addObject:value];
+        }
+    }
+    cout<<contours.size()<<endl;
+    printf("最初识别出的矩形框数目%d",[characterRectValues count]);
+
+    return MatToUIImage(image);
+}
+
++ (NSMutableArray *)findRectsInGRAYFromPlate:(UIImage*)plateImage{
+    static NSMutableArray *originCharRects = [NSMutableArray array];
+    [originCharRects removeAllObjects];
+    cv::Mat cvImage;
+    UIImageToMat(plateImage, cvImage);
     // do your processing here ...
     
     vector<vector<cv::Point>> contours;
     cv::findContours(cvImage, contours, CV_RETR_EXTERNAL, CV_CHAIN_APPROX_NONE);
     for (size_t index = 0; index < contours.size(); index++) {
-        cv::Rect rect = cv::boundingRect(contours[index]);
-        if (rect.height > cvImage.size().height*0.5) {
-            cv::rectangle(image, rect, cv::Scalar(255),1);
-
+        cv::Rect bounding = cv::boundingRect(contours[index]);
+        if ((bounding.height > cvImage.size().height*0.5)&&(bounding.width > bounding.height*0.4)) {
+            CGRect myRect = CGRectMake(bounding.x, bounding.y, bounding.width, bounding.height);
+            NSValue *value = [NSValue valueWithCGRect:myRect];
+            [originCharRects addObject:value];
         }
-        //        if (area > maxArea){
-//            cv::Rect rect = cv::boundingRect(contours[index]);
-//            if ((rect.width/rect.height > 3.0)&&(rect.width/rect.height < 7)) {
-//                maxArea = area;
-//                maxContour = contours[index];
-//            } else {
-//                continue;
-//            }
-//        }
     }
     cout<<contours.size();
-    //    cv::RotatedRect maxRect2 = cv::minAreaRect(maxContour);
-    
-    
-    
-    return MatToUIImage(image);
+    printf("%d",[originCharRects count]);
+    return originCharRects;
 }
- 
- 
+
+
+//Test
 + (UIImage *)cutImageWithOpenCV:(UIImage*)inputImage{
     cv::Rect rect1 = cv::Rect(0,0,300,200);
     cv::Mat cvImage;

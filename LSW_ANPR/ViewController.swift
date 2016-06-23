@@ -18,9 +18,10 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         let image = UIImage(named: "sample3")
         let plate = OpenCVWrapper.cutOutPlate(image)
-        firstImageView.image = OpenCVWrapper.checkPlate(plate)
+        firstImageView.image = OpenCVWrapper.convertBGR2GRAY(plate)
 //        comparedImageView.image = OpenCVWrapper.reprocessImageWithOpenCV(resultImageView.image)
-        
+//        let array = OpenCVWrapper.findRectsFromPlate(firstImageView.image)
+//        print(array)
         secondImageView.image = OpenCVWrapper.reprocessImageWithOpenCV(firstImageView.image)
     }
 
