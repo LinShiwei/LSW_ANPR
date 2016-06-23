@@ -14,7 +14,9 @@
 
 + (UIImage *)reprocessImageWithOpenCV:(UIImage*)inputImage;
 
-+ (NSMutableArray *)findRectsFromPlate:(UIImage*)plateImage;
++ (NSMutableArray *)findRectsInGRAYFromPlate:(UIImage*)plateImage;
++ (NSMutableArray *)getAllRectsFromOriginRects:(NSMutableArray*)originRects;
++ (UIImage *)drawRectangles:(NSMutableArray*)rectArray inGRAYImage:(UIImage*)inputImage;
 
 + (UIImage *)cutImageWithOpenCV:(UIImage*)inputImage;
 

@@ -16,11 +16,15 @@ using namespace std;
 
 + (UIImage *)cutOutPlate:(UIImage*)inputImage {
     //转换到Mat ，保留原始图片副本
+    
     cv::Mat originImage;
     cv::Mat cvImage;
     UIImageToMat(inputImage, originImage);
-    originImage.copyTo(cvImage);
     
+//    UIImage *iimage = [self convertBGR2GRAY:inputImage];
+//    UIImageToMat(iimage, cvImage);
+
+    originImage.copyTo(cvImage);
     //转换到灰度空间，经膨胀腐蚀，再转化为二值图像，并进行形态学转化。
     cv::cvtColor(cvImage, cvImage, CV_BGR2GRAY);
     cv::blur(cvImage, cvImage, cv::Size(5,5));
@@ -49,7 +53,6 @@ using namespace std;
     }
     assert(maxArea != 0);
     cv::Rect maxRect = cv::boundingRect(maxContour);
-//    cv::RotatedRect maxRect2 = cv::minAreaRect(maxContour);
     cv::rectangle(cvImage, maxRect, cv::Scalar(255),-1);
     //截取车牌矩形图片
     cv::Mat licencePlate;
@@ -69,33 +72,18 @@ using namespace std;
     
     return MatToUIImage(cvImage);
 }
-+ (UIImage *)reprocessImageWithOpenCV:(UIImage*)inputImage {
-    cv::Mat cvImage;
-    UIImageToMat(inputImage, cvImage);
-    cv::Mat image;
-    cv::cvtColor(cvImage, image, CV_GRAY2BGR);//为了使画出来的矩形框显出颜色。
-    
-    vector<vector<cv::Point>> contours;
-    NSMutableArray *characterRectValues = [[NSMutableArray alloc] init];
-    cv::findContours(cvImage, contours, CV_RETR_EXTERNAL, CV_CHAIN_APPROX_NONE);
-    for (size_t index = 0; index < contours.size(); index++) {
-        cv::Rect rect = cv::boundingRect(contours[index]);
-        if ((rect.height > cvImage.size().height*0.5)&&(rect.width > rect.height*0.4)) {
-            cv::rectangle(image, rect, cv::Scalar(0,255,0),1);
-            CGRect myRect = CGRectMake(rect.x, rect.y, rect.width, rect.height);
-            NSValue *value = [NSValue valueWithCGRect:myRect];
-            [characterRectValues addObject:value];
-        }
-    }
-    cout<<contours.size()<<endl;
-    printf("最初识别出的矩形框数目%d",[characterRectValues count]);
 
-    return MatToUIImage(image);
++ (UIImage *)reprocessImageWithOpenCV:(UIImage*)inputImage {
+
+    NSMutableArray *characterRectValue = [OpenCVWrapper findRectsInGRAYFromPlate:inputImage];
+    printf("最初识别出的矩形框数目%d",[characterRectValue count]);
+    
+    return [self drawRectangles:characterRectValue inGRAYImage:inputImage];
+    
 }
 
 + (NSMutableArray *)findRectsInGRAYFromPlate:(UIImage*)plateImage{
-    static NSMutableArray *originCharRects = [NSMutableArray array];
-    [originCharRects removeAllObjects];
+    NSMutableArray *originCharRects = [[NSMutableArray alloc] init];
     cv::Mat cvImage;
     UIImageToMat(plateImage, cvImage);
     // do your processing here ...
@@ -110,11 +98,31 @@ using namespace std;
             [originCharRects addObject:value];
         }
     }
-    cout<<contours.size();
+    cout<<contours.size()<<endl;
     printf("%d",[originCharRects count]);
     return originCharRects;
 }
 
++ (NSMutableArray *)getAllRectsFromOriginRects:(NSMutableArray *)originRects{
+    NSMutableArray *allRects = originRects;
+    //从得到的若干个矩形框复原出所有的字符矩形框
+    
+    return allRects;
+}
+
++ (UIImage *)drawRectangles:(NSMutableArray *)rectArray inGRAYImage:(UIImage *)inputImage{
+    cv::Mat cvImage;
+    UIImageToMat(inputImage, cvImage);
+    cv::cvtColor(cvImage, cvImage, CV_GRAY2BGR);
+    
+    for (id value in rectArray) {
+        CGRect rect = [value CGRectValue];
+        cv::Rect cvRect = cv::Rect(rect.origin.x,rect.origin.y,rect.size.width,rect.size.height);
+        cv::rectangle(cvImage, cvRect, cv::Scalar(255,0,0),1);
+    }
+    return MatToUIImage(cvImage);
+    
+}
 
 //Test
 + (UIImage *)cutImageWithOpenCV:(UIImage*)inputImage{
@@ -128,4 +136,6 @@ using namespace std;
     return MatToUIImage(image);
 
 }
+
+
 @end
