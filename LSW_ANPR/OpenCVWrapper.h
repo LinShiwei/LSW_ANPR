@@ -17,7 +17,8 @@
 + (NSMutableArray *)findRectsInGRAYFromPlate:(UIImage*)plateImage;
 + (NSMutableArray *)getAllRectsFromOriginRects:(NSMutableArray*)originRects;
 + (UIImage *)drawRectangles:(NSMutableArray*)rectArray inGRAYImage:(UIImage*)inputImage;
-
++ (NSMutableArray *)addChineseCharRectToArray:(NSMutableArray*)rectArray;
++ (NSMutableArray *)sortArray:(NSMutableArray*)array;
 + (UIImage *)cutImageWithOpenCV:(UIImage*)inputImage;
 
 @end

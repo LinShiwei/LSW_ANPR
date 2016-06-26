@@ -76,7 +76,7 @@ using namespace std;
 + (UIImage *)reprocessImageWithOpenCV:(UIImage*)inputImage {
 
     NSMutableArray *characterRectValue = [OpenCVWrapper findRectsInGRAYFromPlate:inputImage];
-    printf("最初识别出的矩形框数目%d",[characterRectValue count]);
+    printf("识别出的矩形框数目%d",[characterRectValue count]);
     
     return [self drawRectangles:characterRectValue inGRAYImage:inputImage];
     
@@ -98,16 +98,26 @@ using namespace std;
             [originCharRects addObject:value];
         }
     }
+    
+    originCharRects = [self getAllRectsFromOriginRects:originCharRects];
     cout<<contours.size()<<endl;
-    printf("%d",[originCharRects count]);
     return originCharRects;
 }
 
 + (NSMutableArray *)getAllRectsFromOriginRects:(NSMutableArray *)originRects{
-    NSMutableArray *allRects = originRects;
     //从得到的若干个矩形框复原出所有的字符矩形框
+    originRects = [self sortArray:originRects];
+
+    if ([originRects count] < 6) {
+        printf("初始识别出的矩形个数太少，个数是：%d",[originRects count]);
+        return originRects;
+    }else{
+        while ([originRects count] > 6) {
+            [originRects removeObjectAtIndex:0];
+        }
+        return [self addChineseCharRectToArray:originRects];
+    }
     
-    return allRects;
 }
 
 + (UIImage *)drawRectangles:(NSMutableArray *)rectArray inGRAYImage:(UIImage *)inputImage{
@@ -124,6 +134,54 @@ using namespace std;
     
 }
 
++ (NSMutableArray *)addChineseCharRectToArray:(NSMutableArray *)rectArray{
+    
+    //获取最大的矩形框宽和高
+    CGSize rectSize = CGSizeMake(0, 0);
+    for (id rectValue in rectArray){
+        CGRect rect = [rectValue CGRectValue];
+        if (rect.size.width > rectSize.width) {
+            rectSize.width = rect.size.width;
+        }
+        if (rect.size.height > rectSize.height) {
+            rectSize.height = rect.size.height;
+        }
+//        printf("center %f ,%f",rect.origin.x+rect.size.width/2,rect.origin.y+rect.size.height/2);
+        cout<<endl;
+    }
+//    printf("width%f  height%f",rectSize.width,rectSize.height);
+    CGFloat spacing = 0;
+    for (size_t index = 1; index < [rectArray count]-1; index++) {
+        CGRect rect = [rectArray[index] CGRectValue];
+        CGRect nextRect = [rectArray[index+1] CGRectValue];
+        spacing += nextRect.origin.x + nextRect.size.width/2 - (rect.origin.x + rect.size.width/2);
+    }
+    spacing = spacing / ([rectArray count]-2);
+    
+    CGRect firstEnglishCharRect = [rectArray[0] CGRectValue];
+    CGRect chineseCharRect = CGRectMake(firstEnglishCharRect.origin.x+firstEnglishCharRect.size.width/2-spacing-rectSize.width/2, firstEnglishCharRect.origin.y+firstEnglishCharRect.size.height/2-rectSize.height/2, rectSize.width, rectSize.height);
+    
+    [rectArray insertObject:[NSValue valueWithCGRect:chineseCharRect]atIndex:0];
+    
+    
+    assert([rectArray count] == 7);
+    return rectArray;
+}
++ (NSMutableArray *)sortArray:(NSMutableArray *)array{
+    for (size_t i = 0; i < [array count] - 1; i++) {
+        CGRect rect = [array[i] CGRectValue];
+        for (size_t j = 1;i+j < [array count];j++){
+            CGRect nextRect = [array[i+j] CGRectValue];
+            if (rect.origin.x > nextRect.origin.x) {
+                NSValue *swap = array[i];
+                array[i] = array[i+j];
+                array[i+j] = swap;
+            }
+            
+        }
+    }
+    return array;
+}
 //Test
 + (UIImage *)cutImageWithOpenCV:(UIImage*)inputImage{
     cv::Rect rect1 = cv::Rect(0,0,300,200);
