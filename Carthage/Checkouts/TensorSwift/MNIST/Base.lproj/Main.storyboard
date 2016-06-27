@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MNIST" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uby-G9-0HG" customClass="CanvasView" customModule="MNIST" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="uby-G9-0HG" secondAttribute="height" multiplier="1:1" id="iMN-cJ-Vll"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7vG-JB-rEi">
+                                <rect key="frame" x="273" y="560" width="54" height="30"/>
+                                <state key="normal" title="Classify"/>
+                                <connections>
+                                    <action selector="onPressClassifyButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="84U-07-SXk"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" relation="greaterThanOrEqual" secondItem="uby-G9-0HG" secondAttribute="bottom" id="3fz-2w-v7P"/>
+                            <constraint firstItem="uby-G9-0HG" firstAttribute="top" relation="greaterThanOrEqual" secondItem="8bC-Xf-vdC" secondAttribute="top" priority="500" id="3ok-ag-yr9"/>
+                            <constraint firstItem="uby-G9-0HG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8eu-2d-nsr"/>
+                            <constraint firstItem="7vG-JB-rEi" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="BhB-lX-8dI"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="7vG-JB-rEi" secondAttribute="bottom" constant="10" id="O49-dA-vBd"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="uby-G9-0HG" secondAttribute="trailing" priority="500" id="Sfv-CX-pTg"/>
+                            <constraint firstItem="uby-G9-0HG" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" priority="500" id="Wnr-Cj-5Zd"/>
+                            <constraint firstItem="uby-G9-0HG" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" priority="500" id="k6J-97-4Bu"/>
+                            <constraint firstItem="uby-G9-0HG" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8bC-Xf-vdC" secondAttribute="leading" priority="500" id="mkG-Cu-hyV"/>
+                            <constraint firstItem="uby-G9-0HG" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="pWY-OM-cRn"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="canvasView" destination="uby-G9-0HG" id="1zv-6w-oc8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		561CED961D202B8C0018900F /* TensorSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 561CED951D202B8C0018900F /* TensorSwift.framework */; };
 		56D6F96C1D0E59E70092D86E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D6F96B1D0E59E70092D86E /* AppDelegate.swift */; };
 		56D6F96E1D0E59E70092D86E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D6F96D1D0E59E70092D86E /* ViewController.swift */; };
 		56D6F9711D0E59E70092D86E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56D6F96F1D0E59E70092D86E /* Main.storyboard */; };
@@ -28,6 +29,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		561CED951D202B8C0018900F /* TensorSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TensorSwift.framework; path = Carthage/Build/iOS/TensorSwift.framework; sourceTree = "<group>"; };
 		56D6F9681D0E59E70092D86E /* LSW_ANPR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LSW_ANPR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56D6F96B1D0E59E70092D86E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		56D6F96D1D0E59E70092D86E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -50,6 +52,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				56D6F9971D0E6FD90092D86E /* opencv2.framework in Frameworks */,
+				561CED961D202B8C0018900F /* TensorSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,6 +69,7 @@
 		56D6F95F1D0E59E70092D86E = {
 			isa = PBXGroup;
 			children = (
+				561CED951D202B8C0018900F /* TensorSwift.framework */,
 				56D6F9961D0E6FD90092D86E /* opencv2.framework */,
 				56D6F96A1D0E59E70092D86E /* LSW_ANPR */,
 				56D6F97F1D0E59E70092D86E /* LSW_ANPRTests */,
@@ -117,6 +121,7 @@
 				56D6F9641D0E59E70092D86E /* Sources */,
 				56D6F9651D0E59E70092D86E /* Frameworks */,
 				56D6F9661D0E59E70092D86E /* Resources */,
+				561CED0B1D20184C0018900F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -205,6 +210,23 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		561CED0B1D20184C0018900F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/TensorSwift.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		56D6F9641D0E59E70092D86E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -276,6 +298,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -291,6 +314,8 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LIBRARY_SEARCH_PATHS = "";
+				"LIBRARY_SEARCH_PATHS[arch=*]" = "";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -321,6 +346,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -330,6 +356,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LIBRARY_SEARCH_PATHS = "";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
@@ -342,7 +369,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				"FRAMEWORK_SEARCH_PATHS[arch=*]" = /Volumes/LINSW/OpenCVFramework;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					/Volumes/LINSW/OpenCVFramework,
+				);
 				INFOPLIST_FILE = LSW_ANPR/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "lsw.self.LSW-ANPR";
@@ -357,6 +388,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					/Volumes/LINSW/OpenCVFramework,
+				);
 				INFOPLIST_FILE = LSW_ANPR/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "lsw.self.LSW-ANPR";
@@ -373,7 +409,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "lsw.self.LSW-ANPRTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LSW_ANPR.app/LSW_ANPR";
+				TEST_HOST = "";
 			};
 			name = Debug;
 		};
@@ -385,7 +421,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "lsw.self.LSW-ANPRTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LSW_ANPR.app/LSW_ANPR";
+				TEST_HOST = "";
 			};
 			name = Release;
 		};
@@ -408,6 +444,7 @@
 				56D6F9871D0E59E70092D86E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		56D6F9881D0E59E70092D86E /* Build configuration list for PBXNativeTarget "LSW_ANPRTests" */ = {
 			isa = XCConfigurationList;
@@ -416,6 +453,7 @@
 				56D6F98A1D0E59E70092D86E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

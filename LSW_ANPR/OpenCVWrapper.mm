@@ -58,35 +58,15 @@ using namespace std;
     cv::Mat licencePlate;
     originImage(maxRect).copyTo(licencePlate);
     
-    
-//    return MatToUIImage(cvImage);
     return MatToUIImage(licencePlate);
 }
 
-+ (UIImage *)convertBGR2GRAY:(UIImage*)inputImage {
-    cv::Mat cvImage;
-    UIImageToMat(inputImage, cvImage);
-    // do your processing here ...
-    cv::cvtColor(cvImage, cvImage, CV_BGR2GRAY);
-    cv::threshold(cvImage, cvImage, 0, 255, CV_THRESH_OTSU+CV_THRESH_BINARY);
-    
-    return MatToUIImage(cvImage);
-}
-
-+ (UIImage *)reprocessImageWithOpenCV:(UIImage*)inputImage {
-
-    NSMutableArray *characterRectValue = [OpenCVWrapper findRectsInGRAYFromPlate:inputImage];
-    printf("识别出的矩形框数目%d",[characterRectValue count]);
-    
-    return [self drawRectangles:characterRectValue inGRAYImage:inputImage];
-    
-}
-
-+ (NSMutableArray *)findRectsInGRAYFromPlate:(UIImage*)plateImage{
++ (NSMutableArray *)findRectsInBGRPlate:(UIImage*)plateImage{
     NSMutableArray *originCharRects = [[NSMutableArray alloc] init];
     cv::Mat cvImage;
     UIImageToMat(plateImage, cvImage);
-    // do your processing here ...
+    cv::cvtColor(cvImage, cvImage, CV_BGR2GRAY);
+    cv::threshold(cvImage, cvImage, 0, 255, CV_THRESH_OTSU+CV_THRESH_BINARY);
     
     vector<vector<cv::Point>> contours;
     cv::findContours(cvImage, contours, CV_RETR_EXTERNAL, CV_CHAIN_APPROX_NONE);
@@ -99,31 +79,15 @@ using namespace std;
         }
     }
     
-    originCharRects = [self getAllRectsFromOriginRects:originCharRects];
-    cout<<contours.size()<<endl;
+//    originCharRects = [self getAllRectsFromOriginRects:originCharRects];
+    originCharRects = [self sortArray:originCharRects];
     return originCharRects;
 }
 
-+ (NSMutableArray *)getAllRectsFromOriginRects:(NSMutableArray *)originRects{
-    //从得到的若干个矩形框复原出所有的字符矩形框
-    originRects = [self sortArray:originRects];
-
-    if ([originRects count] < 6) {
-        printf("初始识别出的矩形个数太少，个数是：%d",[originRects count]);
-        return originRects;
-    }else{
-        while ([originRects count] > 6) {
-            [originRects removeObjectAtIndex:0];
-        }
-        return [self addChineseCharRectToArray:originRects];
-    }
-    
-}
-
-+ (UIImage *)drawRectangles:(NSMutableArray *)rectArray inGRAYImage:(UIImage *)inputImage{
++ (UIImage *)drawRectangles:(NSMutableArray *)rectArray inBGRImage:(UIImage *)inputImage{
     cv::Mat cvImage;
     UIImageToMat(inputImage, cvImage);
-    cv::cvtColor(cvImage, cvImage, CV_GRAY2BGR);
+//    cv::cvtColor(cvImage, cvImage, CV_GRAY2BGR);
     
     for (id value in rectArray) {
         CGRect rect = [value CGRectValue];
@@ -131,6 +95,44 @@ using namespace std;
         cv::rectangle(cvImage, cvRect, cv::Scalar(255,0,0),1);
     }
     return MatToUIImage(cvImage);
+    
+}
+
+//MARK: Helper
++ (NSMutableArray *)sortArray:(NSMutableArray *)array{
+    for (size_t i = 0; i < [array count] - 1; i++) {
+        CGRect rect = [array[i] CGRectValue];
+        for (size_t j = 1;i+j < [array count];j++){
+            CGRect nextRect = [array[i+j] CGRectValue];
+            if (rect.origin.x > nextRect.origin.x) {
+                NSValue *swap = array[i];
+                array[i] = array[i+j];
+                array[i+j] = swap;
+            }
+            
+        }
+    }
+    return array;
+}
+
++ (UIImage *)convertBGR2GRAY:(UIImage*)inputImage {
+    cv::Mat cvImage;
+    UIImageToMat(inputImage, cvImage);
+    // do your processing here ...
+    cv::cvtColor(cvImage, cvImage, CV_BGR2GRAY);
+    cv::threshold(cvImage, cvImage, 0, 255, CV_THRESH_OTSU+CV_THRESH_BINARY);
+    
+    return MatToUIImage(cvImage);
+}
+
+//MARK: USELESS
+
++ (UIImage *)reprocessImageWithOpenCV:(UIImage*)inputImage {
+    
+    NSMutableArray *characterRectValue = [OpenCVWrapper findRectsInBGRPlate:inputImage];
+    printf("识别出的矩形框数目%d",[characterRectValue count]);
+    
+    return [self drawRectangles:characterRectValue inBGRImage:inputImage];
     
 }
 
@@ -146,10 +148,8 @@ using namespace std;
         if (rect.size.height > rectSize.height) {
             rectSize.height = rect.size.height;
         }
-//        printf("center %f ,%f",rect.origin.x+rect.size.width/2,rect.origin.y+rect.size.height/2);
-        cout<<endl;
     }
-//    printf("width%f  height%f",rectSize.width,rectSize.height);
+    
     CGFloat spacing = 0;
     for (size_t index = 1; index < [rectArray count]-1; index++) {
         CGRect rect = [rectArray[index] CGRectValue];
@@ -167,21 +167,23 @@ using namespace std;
     assert([rectArray count] == 7);
     return rectArray;
 }
-+ (NSMutableArray *)sortArray:(NSMutableArray *)array{
-    for (size_t i = 0; i < [array count] - 1; i++) {
-        CGRect rect = [array[i] CGRectValue];
-        for (size_t j = 1;i+j < [array count];j++){
-            CGRect nextRect = [array[i+j] CGRectValue];
-            if (rect.origin.x > nextRect.origin.x) {
-                NSValue *swap = array[i];
-                array[i] = array[i+j];
-                array[i+j] = swap;
-            }
-            
+//*
++ (NSMutableArray *)getAllRectsFromOriginRects:(NSMutableArray *)originRects{
+    //从得到的若干个矩形框复原出所有的字符矩形框
+    originRects = [self sortArray:originRects];
+    
+    if ([originRects count] < 6) {
+        printf("初始识别出的矩形个数太少，个数是：%d",[originRects count]);
+        return originRects;
+    }else{
+        while ([originRects count] > 6) {
+            [originRects removeObjectAtIndex:0];
         }
+        return [self addChineseCharRectToArray:originRects];
     }
-    return array;
+    
 }
+//*/
 //Test
 + (UIImage *)cutImageWithOpenCV:(UIImage*)inputImage{
     cv::Rect rect1 = cv::Rect(0,0,300,200);

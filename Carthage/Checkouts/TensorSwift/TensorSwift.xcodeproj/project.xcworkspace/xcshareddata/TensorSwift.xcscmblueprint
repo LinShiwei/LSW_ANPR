@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "CCDC2BEAB93820BE1DDD6D36F8B9D2CF4E8BD09E",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "CCDC2BEAB93820BE1DDD6D36F8B9D2CF4E8BD09E" : 0,
+    "18D6DCF80925D0A5F4A2E9949DF09AF85B0E1068" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "0556DE8C-97B0-412A-B88B-E9D3D6B8C28F",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "CCDC2BEAB93820BE1DDD6D36F8B9D2CF4E8BD09E" : "TensorSwift\/",
+    "18D6DCF80925D0A5F4A2E9949DF09AF85B0E1068" : ".."
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "TensorSwift",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "TensorSwift.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ghe.qar.jp:qoncept\/osaka-station-navi-demo.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "18D6DCF80925D0A5F4A2E9949DF09AF85B0E1068"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:qoncept\/TensorSwift.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "CCDC2BEAB93820BE1DDD6D36F8B9D2CF4E8BD09E"
+    }
+  ]
+}
