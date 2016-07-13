@@ -15,15 +15,11 @@ using namespace std;
 @implementation OpenCVWrapper : NSObject
 
 + (UIImage *)cutOutPlate:(UIImage*)inputImage {
-    //转换到Mat ，保留原始图片副本
     
     cv::Mat originImage;
     cv::Mat cvImage;
     UIImageToMat(inputImage, originImage);
     
-//    UIImage *iimage = [self convertBGR2GRAY:inputImage];
-//    UIImageToMat(iimage, cvImage);
-
     originImage.copyTo(cvImage);
     //转换到灰度空间，经膨胀腐蚀，再转化为二值图像，并进行形态学转化。
     cv::cvtColor(cvImage, cvImage, CV_BGR2GRAY);
@@ -185,14 +181,13 @@ using namespace std;
 }
 //*/
 //Test
-+ (UIImage *)cutImageWithOpenCV:(UIImage*)inputImage{
-    cv::Rect rect1 = cv::Rect(0,0,300,200);
++ (UIImage *)cutOutCharFrom:(UIImage*)inputImage withRectValue:(NSValue*)rectValue{
+    CGRect cgRect = [rectValue CGRectValue];
+    cv::Rect rect = cv::Rect(cgRect.origin.x,cgRect.origin.y,cgRect.size.width,cgRect.size.height);
     cv::Mat cvImage;
     UIImageToMat(inputImage, cvImage);
     cv::Mat image;
-    cvImage(rect1).copyTo(image);
-
-//    return MatToUIImage(cvImage);
+    cvImage(rect).copyTo(image);
     return MatToUIImage(image);
 
 }

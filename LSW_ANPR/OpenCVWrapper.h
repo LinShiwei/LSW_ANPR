@@ -19,6 +19,6 @@
 + (UIImage *)drawRectangles:(NSMutableArray*)rectArray inBGRImage:(UIImage*)inputImage;
 + (NSMutableArray *)addChineseCharRectToArray:(NSMutableArray*)rectArray;
 + (NSMutableArray *)sortArray:(NSMutableArray*)array;
-+ (UIImage *)cutImageWithOpenCV:(UIImage*)inputImage;
++ (UIImage *)cutOutCharFrom:(UIImage*)inputImage withRectValue:(NSValue*)rectValue;
 
 @end
